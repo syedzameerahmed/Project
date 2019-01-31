@@ -1,0 +1,47 @@
+
+USER TABLE
+
+CREATE TABLE USER(
+	EMAIL VARCHAR2(20) PRIMARY KEY,
+	NAME VARCHAR2(20) NOT NULL,
+	PASSWORD VARCHAR2(15) NOT NULL,
+	PHONENO NUMBER(10)
+);
+********************************************************************************************
+
+ADMIN TABLE
+
+CREATE TABLE ADMIN(
+	EMAIL VARCHAR2(20) PRIMARY KEY,
+	NAME VARCHAR2(20) NOT NULL,
+	PASSWORD VARCHAR2(15) NOT NULL,
+	PHONENO NUMBER(10)
+);
+********************************************************************************************
+
+CATEGORIES TABLE
+
+CREATE TABLE CATEGORIES(
+	CID VARCHAR(8)  PRIMARY KEY,
+	CNAME VARCHAR2(20) NOT NULL
+);
+********************************************************************************************
+
+SUBJECT TABLE
+
+CREATE TABLE SUBJECT(
+	SID VARCHAR(8)  PRIMARY KEY,
+	SNAME VARCHAR2(20) NOT NULL,
+	CID REFERENCES CATEGORIES(CID)
+);
+********************************************************************************************
+
+MYCOURSE TABLE
+
+CREATE TABLE MYCOURSE(
+	SLNO NUMBER(3) PRIMARY KEY,
+	SID VARCHAR(8) REFERENCES SUBJECT(SID),
+	EMAIL VARCHAR2(20) REFERENCES USER(EMAIL)
+);
+********************************************************************************************
+
